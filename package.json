@@ -10,14 +10,14 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:tosingleline.helloWorld"
+        "onCommand:tosingleline.execute"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "tosingleline.helloWorld",
-				"title": "Hello World"
+				"command": "tosingleline.execute",
+				"title": "To Single Line"
 			}
 		]
 	},

@@ -13,10 +13,28 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('tosingleline.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('tosingleline.execute', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from ToSingleLine!');
+		
+
+		let editor = vscode.window.activeTextEditor;
+		let document = editor?.document;  
+		if (document) {
+			let text = document.getText();
+
+			const fullRange = new vscode.Range(document.positionAt(0), document.positionAt(text.length - 1));
+
+			const searchRegExp = /\n/g;
+			const replaceWith = ' ';
+
+			text = text.replace(searchRegExp, replaceWith);
+			editor?.edit(e => e.replace(fullRange, text));
+			vscode.window.showInformationMessage('Text processed with ToSingleLine!');
+		}
+		else {
+			vscode.window.showErrorMessage('A text editor must be active');
+		}
 	});
 
 	context.subscriptions.push(disposable);
