@@ -3,7 +3,7 @@
 	"displayName": "To Single Line",
 	"description": "Replace all car returns with spaces",
 	"publisher": "GuiExtensions",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.61.0"
 	},
