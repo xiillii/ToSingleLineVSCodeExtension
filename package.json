@@ -3,7 +3,7 @@
 	"displayName": "To Single Line",
 	"description": "Replace all carriage returns and 2 or more whitespaces with one space",
 	"publisher": "GuiExtensions",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"engines": {
 		"vscode": "^1.61.0"
 	},
