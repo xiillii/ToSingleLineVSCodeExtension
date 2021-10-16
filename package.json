@@ -1,7 +1,7 @@
 {
   "name": "tosingleline",
 	"displayName": "To Single Line",
-	"description": "Replace all car returns with spaces",
+	"description": "Replace all carriage returns and 2 or more whitespaces with one space",
 	"publisher": "GuiExtensions",
 	"version": "0.0.2",
 	"engines": {
