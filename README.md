@@ -4,8 +4,6 @@ To Single Line extensión
 
 ## Features
 
-This extensión replaces all car returns to spaces
-
-
+Replace all carriage returns and 2 or more whitespaces with one space
 
 **Enjoy!**
