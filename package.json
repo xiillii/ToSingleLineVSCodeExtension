@@ -24,7 +24,7 @@
     "commands": [
       {
         "command": "tosingleline.execute",
-        "title": "To Single Line. All Document"
+        "title": "To Single Line. Whole Document"
       },
       {
         "command": "tosingleline.selection.execute",
