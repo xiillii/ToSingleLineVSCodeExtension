@@ -13,7 +13,6 @@ export function activate(context: vscode.ExtensionContext) {
 	// The commandId parameter must match the command field in package.json
 	let disposable = vscode.commands.registerCommand('tosingleline.execute', () => {
 		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
 
 
 		let editor = vscode.window.activeTextEditor;
@@ -39,7 +38,45 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(disposable);
+
+	disposable = vscode.commands.registerCommand('tosingleline.selection.execute', () => {
+		// The code you place here will be executed every time your command is executed
+
+
+		let editor = vscode.window.activeTextEditor;
+		let document = editor?.document;
+		if (document) {
+
+			editor?.edit(editBuilder => {
+				editor?.selections.forEach(sel => {
+					const range = sel.isEmpty ? document?.getWordRangeAtPosition(sel.start) || sel : sel;
+					let text = document?.getText(range);
+					
+					const searchRegExpReturns = /[\r\n]/gm;
+					const replaceWith = ' ';
+					const searchRegExpTwoOrMoreSpaces = /\s{2,}/gm;
+
+					text = text?.replace(searchRegExpReturns, replaceWith);
+					text = text?.replace(searchRegExpTwoOrMoreSpaces, replaceWith);
+
+					editBuilder.replace(range, text??'');
+				});
+			});
+
+			
+			
+			vscode.window.showInformationMessage('Text processed with ToSingleLine!');
+
+		}
+		else {
+			vscode.window.showErrorMessage('A text editor must be active');
+		}
+	});
+
+	context.subscriptions.push(disposable);
 }
+
+
 
 // this method is called when your extension is deactivated
 export function deactivate() { }
